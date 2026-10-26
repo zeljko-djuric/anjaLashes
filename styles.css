@@ -29,6 +29,16 @@ html {
   scroll-behavior: smooth;
 }
 
+#top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -66,6 +76,7 @@ button {
 
 body.sheet-open {
   overflow: hidden;
+  touch-action: none;
 }
 
 .skip-link {
@@ -711,10 +722,15 @@ h3 {
   display: grid;
   align-items: end;
   padding: 0.85rem 0.85rem calc(0.85rem + env(safe-area-inset-bottom));
+  pointer-events: none;
 }
 
 .sheet[hidden] {
-  display: none;
+  display: none !important;
+}
+
+.sheet.is-open {
+  pointer-events: auto;
 }
 
 .sheet__backdrop {
@@ -725,6 +741,12 @@ h3 {
   transition: opacity 0.32s var(--ease);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.sheet.is-open .sheet__backdrop {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .sheet__panel {
@@ -741,14 +763,12 @@ h3 {
   box-shadow: 0 24px 60px rgba(42, 32, 28, 0.28);
   transform: translateY(110%);
   transition: transform 0.38s var(--ease);
-}
-
-.sheet.is-open .sheet__backdrop {
-  opacity: 1;
+  pointer-events: none;
 }
 
 .sheet.is-open .sheet__panel {
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .sheet__handle {

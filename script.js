@@ -1,5 +1,4 @@
 (() => {
-  // Update this phone when you have the final number (digits only with country code, no +)
   const PHONE_E164 = "38766059484";
   const PHONE_DISPLAY = "+387 66 059 484";
 
@@ -11,6 +10,13 @@
   const sheetPanel = sheet?.querySelector(".sheet__panel");
 
   if (year) year.textContent = String(new Date().getFullYear());
+
+  // Ensure scroll is never stuck from a leftover sheet state
+  document.body.classList.remove("sheet-open");
+  if (sheet) {
+    sheet.classList.remove("is-open");
+    sheet.hidden = true;
+  }
 
   const setHeaderState = () => {
     if (!header) return;
@@ -34,6 +40,24 @@
     link.addEventListener("click", closeNav);
   });
 
+  const scrollToTop = () => {
+    closeNav();
+    closeSheet(true);
+    const top = document.querySelector("#top");
+    if (top) {
+      top.focus({ preventScroll: true });
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  document.querySelectorAll("[data-scroll-top]").forEach((el) => {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToTop();
+      history.replaceState(null, "", "#top");
+    });
+  });
+
   const wireContactLinks = () => {
     const call = sheet?.querySelector('[data-contact="call"]');
     const wa = sheet?.querySelector('[data-contact="whatsapp"]');
@@ -55,34 +79,43 @@
   wireContactLinks();
 
   let lastFocus = null;
+  let closeTimer = 0;
 
   const openSheet = () => {
     if (!sheet) return;
+    window.clearTimeout(closeTimer);
     lastFocus = document.activeElement;
     sheet.hidden = false;
-    requestAnimationFrame(() => {
-      sheet.classList.add("is-open");
-      document.body.classList.add("sheet-open");
-      sheetPanel?.querySelector(".sheet__cancel")?.focus();
-    });
+    // force reflow so the open transition runs
+    void sheet.offsetWidth;
+    sheet.classList.add("is-open");
+    document.body.classList.add("sheet-open");
+    sheetPanel?.querySelector(".sheet__cancel")?.focus();
   };
 
-  const closeSheet = () => {
-    if (!sheet || sheet.hidden) return;
+  const closeSheet = (immediate = false) => {
+    if (!sheet) return;
     sheet.classList.remove("is-open");
     document.body.classList.remove("sheet-open");
-    const onEnd = (event) => {
-      if (event.target !== sheetPanel) return;
+
+    const finish = () => {
       sheet.hidden = true;
-      sheetPanel.removeEventListener("transitionend", onEnd);
-      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-    };
-    sheetPanel?.addEventListener("transitionend", onEnd);
-    window.setTimeout(() => {
-      if (!sheet.hidden && !sheet.classList.contains("is-open")) {
-        sheet.hidden = true;
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        try {
+          lastFocus.focus({ preventScroll: true });
+        } catch {
+          lastFocus.focus();
+        }
       }
-    }, 420);
+    };
+
+    window.clearTimeout(closeTimer);
+    if (immediate) {
+      finish();
+      return;
+    }
+
+    closeTimer = window.setTimeout(finish, 380);
   };
 
   document.querySelectorAll("[data-book-open]").forEach((btn) => {
@@ -93,12 +126,12 @@
   });
 
   document.querySelectorAll("[data-book-close]").forEach((el) => {
-    el.addEventListener("click", closeSheet);
+    el.addEventListener("click", () => closeSheet());
   });
 
   sheet?.querySelectorAll(".sheet__action").forEach((action) => {
     action.addEventListener("click", () => {
-      window.setTimeout(closeSheet, 150);
+      window.setTimeout(() => closeSheet(), 120);
     });
   });
 
