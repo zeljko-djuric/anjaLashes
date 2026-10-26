@@ -264,8 +264,11 @@
       aria-labelledby="book-sheet-title"
     >
       <div class="sheet__handle" aria-hidden="true"></div>
-      <p class="sheet__title" id="book-sheet-title">Rezerviši termin</p>
-      <p class="sheet__subtitle">Izaberi kako želiš da nas kontaktiraš</p>
+      <header class="sheet__header">
+        <p class="sheet__eyebrow">Anja Lash Studio</p>
+        <p class="sheet__title" id="book-sheet-title">Rezerviši termin</p>
+        <p class="sheet__subtitle">Izaberi kako želiš da nas kontaktiraš</p>
+      </header>
       <div class="sheet__actions" role="group" aria-label="Opcije kontakta">
         <a class="sheet__action" data-contact="call" href="#">
           <span class="sheet__action-icon sheet__action-icon--call" aria-hidden="true">
@@ -275,6 +278,7 @@
             <strong>Poziv</strong>
             <small>Pozovi studio</small>
           </span>
+          <span class="sheet__chevron" aria-hidden="true">→</span>
         </a>
         <a class="sheet__action" data-contact="whatsapp" href="#" target="_blank" rel="noopener noreferrer">
           <span class="sheet__action-icon sheet__action-icon--wa" aria-hidden="true">
@@ -284,6 +288,7 @@
             <strong>WhatsApp</strong>
             <small>Pošalji poruku</small>
           </span>
+          <span class="sheet__chevron" aria-hidden="true">→</span>
         </a>
         <a class="sheet__action" data-contact="viber" href="#">
           <span class="sheet__action-icon sheet__action-icon--viber" aria-hidden="true">
@@ -293,6 +298,7 @@
             <strong>Viber</strong>
             <small>Otvori chat</small>
           </span>
+          <span class="sheet__chevron" aria-hidden="true">→</span>
         </a>
         <a class="sheet__action" data-contact="instagram" href="https://instagram.com/anja.lashstudio" target="_blank" rel="noopener noreferrer">
           <span class="sheet__action-icon sheet__action-icon--ig" aria-hidden="true">
@@ -302,6 +308,7 @@
             <strong>Instagram</strong>
             <small>@anja.lashstudio</small>
           </span>
+          <span class="sheet__chevron" aria-hidden="true">→</span>
         </a>
       </div>
       <button class="sheet__cancel" type="button" data-book-close>Otkaži</button>
