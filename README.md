@@ -21,4 +21,3 @@ Zatim posjeti `http://localhost:8080`.
 - `styles.css` — stilovi (brand paleta iz logo branding sheet-a)
 - `script.js` — navigacija i scroll animacije
 - `assets/` — logo, hero, galerija, certifikat
-- `anja.mp4`, `anja3.mp4` — video radova
