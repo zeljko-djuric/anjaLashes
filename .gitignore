@@ -3,3 +3,8 @@
 .idea/
 .vscode/
 node_modules/
+
+# promo-video-maker outputs
+宣传片/
+.agents/
+.venv-promo/

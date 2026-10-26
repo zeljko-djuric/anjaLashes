@@ -1,7 +1,7 @@
 (() => {
   // Update this phone when you have the final number (digits only with country code, no +)
-  const PHONE_E164 = "38765123456";
-  const PHONE_DISPLAY = "+387 65 123 456";
+  const PHONE_E164 = "38766059484";
+  const PHONE_DISPLAY = "+387 66 059 484";
 
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");

@@ -3,7 +3,7 @@
 Mobilni web sajt za **Anja Lash Studio** (Anja Verem) — Mrkonjić Grad.
 
 **Slogan:** Beauty in every blink  
-**Instagram:** [@anja.lashstudio](https://instagram.com/anja.lashstudio)
+**Instagram:** [@veremanja](https://instagram.com/veremanja)
 
 ## Pokretanje
 
