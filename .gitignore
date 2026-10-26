@@ -4,6 +4,9 @@
 .vscode/
 node_modules/
 
+# local-only brand export
+anja-lash-studio-brand.png
+
 # promo-video-maker outputs
 宣传片/
 .agents/
