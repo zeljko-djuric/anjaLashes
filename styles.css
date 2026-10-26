@@ -184,14 +184,14 @@ h3 {
 }
 
 .brand-mark__icon {
-  width: 3.6rem;
-  color: var(--gold-bright);
-}
-
-.brand-mark__icon svg {
-  width: 100%;
-  height: auto;
+  width: 4.4rem;
+  aspect-ratio: 830 / 330;
   display: block;
+  flex-shrink: 0;
+  color: var(--gold-bright);
+  background-color: currentColor;
+  -webkit-mask: url("assets/logo-mark.png") center / contain no-repeat;
+  mask: url("assets/logo-mark.png") center / contain no-repeat;
 }
 
 .brand-mark__text {
@@ -242,7 +242,7 @@ h3 {
 }
 
 .brand-mark--footer .brand-mark__icon {
-  width: 4.4rem;
+  width: 5.2rem;
   color: var(--gold);
 }
 
@@ -256,7 +256,7 @@ h3 {
 
 @media (min-width: 720px) {
   .brand-mark__icon {
-    width: 4.2rem;
+    width: 5.2rem;
   }
 
   .brand-mark__name {
