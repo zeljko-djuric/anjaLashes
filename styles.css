@@ -161,41 +161,30 @@ h3 {
 .brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
   text-decoration: none;
-  color: var(--taupe);
+  line-height: 0;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.55rem;
+  background: rgba(249, 247, 242, 0.82);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s var(--ease);
 }
 
-.brand-mark__icon {
-  width: 2.4rem;
-  color: var(--gold);
+.site-header.is-scrolled .brand-mark {
+  background: transparent;
+  backdrop-filter: none;
 }
 
-.brand-mark__icon svg {
-  width: 100%;
-  height: auto;
-  display: block;
+.brand-mark__logo {
+  width: auto;
+  height: 2.85rem;
+  object-fit: contain;
 }
 
-.brand-mark__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.brand-mark__name {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.brand-mark__sub {
-  font-size: 0.58rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--taupe-soft);
-  margin-top: 0.25rem;
+@media (min-width: 720px) {
+  .brand-mark__logo {
+    height: 3.35rem;
+  }
 }
 
 .nav-toggle {
@@ -669,38 +658,24 @@ h3 {
 }
 
 .footer-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.1rem;
   color: var(--taupe);
 }
 
-.footer-brand__icon {
-  width: 2.8rem;
-  color: var(--gold);
-}
-
-.footer-brand__icon svg {
-  width: 100%;
+.footer-brand__logo {
+  width: min(11rem, 52vw);
   height: auto;
 }
 
-.footer-brand strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.footer-brand span {
-  display: block;
+.footer-brand__tag {
+  margin: 0;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-top: 0.2rem;
+  color: var(--taupe-soft);
 }
 
 .footer-copy {
